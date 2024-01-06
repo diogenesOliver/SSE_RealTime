@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE RealTime</title>
+</head>
+<body>
+    <h1>SSE Realtime message</h1>
+    <div id="message"></div>
+
+    <script>
+        const evenSource = new EventSource('/sse')
+        evenSource.addEventListener('message', event => {
+            const message = document.getElementById('message')
+            message.innerHTML = event.data
+
+            console.log(event)
+        })
+    </script>
+</body>
+</html>
